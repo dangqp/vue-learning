@@ -18,4 +18,9 @@ public class VuelogApplicationTests {
         System.out.println(blogService.getById(1));
     }
 
+    @Test
+    public void encry(){
+        String str = "111111";
+    }
+
 }

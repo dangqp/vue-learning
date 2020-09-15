@@ -58,6 +58,21 @@ public class AccountController {
         );
     }
 
+    @CrossOrigin
+    @PostMapping("/register")
+    public Result register(@Validated @RequestBody User user) {
+        user.setId(System.currentTimeMillis());
+        user.setPassword(SecureUtil.md5(user.getPassword()));
+        user.setStatus(0);
+        boolean save = userService.save(user);
+        if (save){
+            // 用户可以另一个接口
+            return Result.succ("注册成功");
+        }
+        // 用户可以另一个接口
+        return Result.fail("注册失败");
+    }
+
     // 退出
     @GetMapping("/logout")
     @RequiresAuthentication

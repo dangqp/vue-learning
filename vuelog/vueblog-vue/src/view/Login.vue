@@ -9,8 +9,9 @@
                     <el-form-item label="用户名" prop="username">
                         <el-input v-model="ruleForm.username"></el-input>
                     </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                        <el-input type="password" v-model="ruleForm.password"></el-input>
+                    <el-form-item label="密码" prop="password" @keyup.enter.native="submitForm('ruleForm')">
+<!--                        <el-input type="password" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>-->
+                        <el-input type="password" v-model="ruleForm.password" ></el-input>
                     </el-form-item>
 
                     <el-form-item>
@@ -46,6 +47,7 @@
         },
         methods: {
             submitForm(formName) {
+                console.log(1111)
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         // alert('submit!');
